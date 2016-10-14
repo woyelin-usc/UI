@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Assets/chosen_v1.6.2/chosen.min.css">
+    <script src="Assets/chosen_v1.6.2/chosen.jquery.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+    <title>US Representative Search</title>
+</head>
+
+<body>
+    <center>
+        <div>
+            <h1>US Representative Search</h1>
+        </div>
+        <table class="matchpre">
+            <tr>
+                <td>Address:</td>
+                <td>
+                    <input id='addressInput' type="text" name="address">
+                </td>
+            </tr>
+            <tr>
+                <td>IncludeOffices:</td>
+                <td>
+                    <select name="" id="includeOffices">
+                        <option value="select"></option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Levels:</td>
+                <td>
+                    <select id='Levels-select' data-placeholder="Choose levels..." class="chosen-select" multiple tabindex="4">
+                        <option value="administrativeArea1">administrativeArea1</option>
+                        <option value="administrativeArea2">administrativeArea2</option>
+                        <option value="country">country</option>
+                        <option value="international">international</option>
+                        <option value="locality">locality</option>
+                        <option value="regional">regional</option>
+                        <option value="special">special</option>
+                        <option value="subLocality1">subLocality1</option>
+                        <option value="subLocality2">subLocality2</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Roles:</td>
+                <td>
+                    <select id="Roles-select" data-placeholder="Choose Roles..." class="chosen-select" multiple tabindex="4">
+                        <option value="deputyHeadOfGovernment">deputyHeadOfGovernment</option>
+                        <option value="executiveCouncil">executiveCouncil</option>
+                        <option value="governmentOfficer">governmentOfficer</option>
+                        <option value="headOfGovernment">headOfGovernment</option>
+                        <option value="headOfState">headOfState</option>
+                        <option value="highestCourtJudge">highestCourtJudge</option>
+                        <option value="judge">judge</option>
+                        <option value="legislatorLowerBody">legislatorLowerBody</option>
+                        <option value="legislatorUpperBody">legislatorUpperBody</option>
+                        <option value="schoolBoard">schoolBoard</option>
+                        <option value="specialPurposeOfficer">specialPurposeOfficer</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <button id="searchBtn">Search</button>
+        <div id="officials">
+            <br/>
+            <br/>
+        </div>
+        <div id="office">
+            <br>
+            <br>
+            <table id="officesTbl" class="display" cellspacing="0" width="50%">
+            </table>
+        </div>
+    </center>
+</body>
+
+</html>
