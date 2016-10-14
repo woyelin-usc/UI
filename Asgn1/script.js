@@ -1,4 +1,4 @@
-var KEY = "AIzaSyCknkFShZR4wu22o7QgMjPZlDWzrZ9L7rA";
+var KEY = "#################################";
 
 function representativeInfoByAddress() {
     $.ajax({
