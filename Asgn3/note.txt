@@ -1,0 +1,2 @@
+$()[0]: 
+JQueryObject[0]: This is how to access DOM html element through JQuery object
