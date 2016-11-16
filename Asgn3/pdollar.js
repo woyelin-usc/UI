@@ -195,6 +195,7 @@ function CloudDistance(pts1, pts2, start)
 	} while (i != start);
 	return sum;
 }
+
 function Resample(points, n)
 {
 	var I = PathLength(points) / (n - 1); // interval length
