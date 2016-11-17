@@ -34,6 +34,14 @@
 				</tr>
 			</tbody>
 		</table>
+		<button id="addRow" type="button" onclick="addRow()">AddRow</button>
+		<script>
+			function addRow() {
+				$("#videoTable").DataTable().row.add([
+					'3', 'mycanvas', 'newVideo'
+				]).draw(false)
+			}
+		</script>
 	</div>
 </center>
 
