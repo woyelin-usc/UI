@@ -1,6 +1,6 @@
 // var _isDown, _points, _strokeID, _r, _g, _rc, _idx =null; // global variables
 
-var _isDownArr = [], _pointsArr=[], _strokeIDArr=[], _rArr=[], _gArr=[], _rcArr=[], _idx =null; // global variables
+var _isDownArr = [], _pointsArr=[], _strokeIDArr=[], _rArr=[], _gArr=[], _rcArr=[], _urlArr=["fakeurl"],_idx =null; // global variables
 
 $(document).ready( function () {
 	$("#videoTable").DataTable( {
@@ -11,13 +11,18 @@ $(document).ready( function () {
 	    var idx = $("#videoTable").DataTable().row( this ).index();
 	    _idx = idx 
 	})
+
+    $('#videoTable tbody').on( 'click', 'tr', function () {
+    	$("#videoTable").DataTable.$('tr.selected').removeClass('selected');
+    	$(this).addClass('selected');
+	});
+
 });
 
 
 function onLoadEvent()
 {
 	createVideo(0)
-	console.log(_rcArr.length)
 	for (var i = 1; i<_rcArr.length; ++i)
 		createVideo(i)
 }
@@ -105,14 +110,6 @@ function mouseMoveEvent(x, y, button) {
 	}
 }
 
-function swap(arr, i, j) {
-	console.log(arr.length)
-	var tmp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = tmp
-	arr.pop()
-	console.log(arr.length)
-}
 
 function mouseUpEvent(x, y, button, id) {
 	document.onselectstart = function() { return true; } // enable drag-select
@@ -136,7 +133,7 @@ function mouseUpEvent(x, y, button, id) {
 			}
 			text = text.slice(0,-1)
 			text += ")"
-			console.log(text)
+			// console.log(text)
 			
 			var result = _rArr[_idx].Recognize(_pointsArr[_idx]);
 			drawText("Result: " + result.Name + " (" + round(result.Score,2) + ").");
@@ -242,63 +239,87 @@ function mouseUpEvent(x, y, button, id) {
 
 				if(_idx==0) {
 					for(var i=1; i<_rcArr.length; ++i) {
-						$("#video"+i)[0].width+=50
+						$("#video"+i)[0].width+=100
 					}
 				}
 
-				else $("#video"+_idx)[0].width+=50
+				else $("#video"+_idx)[0].width+=100
 				onLoadEvent()
 				drawText("Result: " + result.Name + " (" + round(result.Score,2) + ").");
 			}
 			else if(result.Name == "decreaseWidth") {
 				if(_idx==0) {
 					for(var i=1; i<_rcArr.length; ++i) {
-						$("#video"+i)[0].width-=50
+						$("#video"+i)[0].width-=100
 					}
 				}
 
-				else $("#video"+_idx)[0].width-=50
-				// onLoadEvent()
+				else $("#video"+_idx)[0].width-=100
+				onLoadEvent()
+				drawText("Result: " + result.Name + " (" + round(result.Score,2) + ").");
 			}
 			else if(result.Name == "increaseHeight") {
 				if(_idx==0) {
 					for(var i=1; i<_rcArr.length; ++i) {
-						$("#video"+i)[0].height+=50
+						$("#video"+i)[0].height+=100
 					}
 				}
 
-				else $("#video"+_idx)[0].height+=50
-				// onLoadEvent()
+				else $("#video"+_idx)[0].height+=100
+				onLoadEvent()
+				drawText("Result: " + result.Name + " (" + round(result.Score,2) + ").");
 			}
 			else if(result.Name == "decreaseHeight") {
 				if(_idx==0) {
 					for(var i=1; i<_rcArr.length; ++i) {
-						$("#video"+i)[0].height-=50
+						$("#video"+i)[0].height-=100
 					}
 				}
 
-				else $("#video"+_idx)[0].height-=50
+				else $("#video"+_idx)[0].height-=100
 				onLoadEvent()
+				drawText("Result: " + result.Name + " (" + round(result.Score,2) + ").");
 			}
 			else if(result.Name == "addVideo") {
 				if(_idx==0) {
-					console.log("add video")
 					var url = prompt("Please enter your video URL")
 					addVideo(url)
 				}
 			}
-
 			else if(result.Name == "deleteVideo") {
 				if(_idx==0) {
 					console.log("Delete All Videos")
 				}
 				else {
-					swap(_isDownArr, _idx, _isDownArr.length-1)
-					swap(_pointsArr, _idx, _pointsArr.length-1)
-					swap(_strokeIDArr, _idx, _strokeIDArr.length-1)
-					swap(_rArr, _idx, _rArr.length-1)
-					swap(_gArr, _idx, _gArr.length-1)
-					swap(_rcArr, _idx, _rcArr.length-1)
+					$("#videoTable").DataTable().row('.selected').remove().draw( false );
+					deleteVideo(_idx)
+					onLoadEvent()
+					// console.log("BEFORE: " + _rcArr.length)
+					// deleteVideo(_idx)
+					// $("#videoTable").empty()
+					// console.log("AFTER: " + _rcArr.length)
+
+
+     //        		$("<table class='display' id='videoTable' cellspacing='0' width='100%'></table>").appendTo($(".container"))
+     //        		$("<thead></thead>").appendTo($("#videoTable"));
+     //        		$("#videoTable thead").append("<tr></tr>");
+     //            	$("#videoTable thead tr").append("<th>NewCanvas</th>");
+     //            	$("#videoTable thead tr").append("<th>NewVideo</th>");
+                	// $("<tbody></tbody>").appendTo($("#videoTable"));
+                	// for(var i=1; i<_rcArr.length; ++i) {
+                	// 	console.log(_urlArr[i])
+						// $("#videoTable").DataTable().row.add([
+						// 	'<canvas id="'+('canvas'+i)+'" width="250" height="200" style="background-color:#dddddd" \
+						// 	onmousedown="mouseDownEvent(event.clientX, event.clientY, event.button)" \
+						// 	onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)" \
+						// 	onmouseup="mouseUpEvent(event.clientX, event.clientY, event.button)" \
+						// 	oncontextmenu="return false;"></canvas>',
+						// 	'<video controls id="'+('video'+i)+'" width="320" height="240" src="../../../Desktop/'+_urlArr[i]+'"></video>'
+						// ]).draw(true)
+						// console.log("draw a role")
+                	// }
+
+					// onLoadEvent()
 				}
 			}
 		}
@@ -322,6 +343,31 @@ function addVideo(url) {
 	]).draw(true)
 
 	createVideo(idx)
+	_urlArr[idx] = url
+}
+
+function swap(arr, i, j) {
+	var tmp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = tmp
+	arr.pop()
+}
+
+function deleteVideo(idx) {
+	_isDownArr.splice(idx,1)
+	_pointsArr.splice(idx,1)
+	_strokeIDArr.splice(idx,1)
+	_rArr.splice(idx,1)
+	_gArr.splice(idx,1)
+	_rcArr.splice(idx,1)
+	_urlArr.splice(idx,1)
+
+
+	for(; idx<_isDownArr.length; ++idx) {
+		var j = idx+1
+		$("#canvas"+j)[0].id = "canvas"+idx
+		$("#video"+j)[0].id = "video"+idx
+	}
 }
 
 

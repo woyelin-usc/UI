@@ -19,6 +19,7 @@
 					<td>ID</td>
 					<td>Canvas</td>
 					<td>Video</td>
+					<td>Delete</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,11 +27,13 @@
 					<td>1</td>
 					<td>canvas1</td>
 					<td>video1</td>
+					<td><button id="delete1">delete</button></td>
 				</tr>
 				<tr>
 					<td>2</td>
 					<td>Canvas2</td>
 					<td>Video2</td>
+					<td><button id="delete2">delete</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -41,6 +44,14 @@
 					'3', 'mycanvas', 'newVideo'
 				]).draw(false)
 			}
+
+
+			$("#delete").click(function() {
+				console.log("Hello")
+				$("#videoTable").DataTable().row($(this)).closest('tr').remove().draw()
+			})
+
+
 		</script>
 	</div>
 </center>
