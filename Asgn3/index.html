@@ -18,10 +18,7 @@
 
 <!-- Gesture image and canvas -->
 <center>
-
-
-
-
+	<h1> Multiple Video Player</h1>
 	<div class="container" style="width: 80%">
 		<table class="display" id="videoTable" cellspacing="0" width="100%">
 			<thead>
@@ -31,10 +28,8 @@
 				</tr>
 			</thead>
 			<tbody>
-
-
 			<tr>
-				<td>	
+				<td >	
 					<canvas id="canvas0" width="400" height="250" style="background-color:#dddddd"
 						onmousedown="mouseDownEvent(event.clientX, event.clientY, event.button)"
 						onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)"
@@ -42,51 +37,17 @@
 						oncontextmenu="return false;">
 					</canvas>
 				</td>
-				<td>This canvas is used to:
-					<ul>
+				<td>This special canvas is used to:
+					<ul> 
 						<li>Control all the videos simutaneously</li>
 						<li>Adding a new video ( + )</li>
 					</ul>
 				</td>
 			</tr>
-
-<!-- 				<tr>
-					<td>
-						<canvas id="canvas1" width="250" height="200" style="background-color:#dddddd"
-							onmousedown="mouseDownEvent(event.clientX, event.clientY, event.button)"
-							onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)"
-							onmouseup="mouseUpEvent(event.clientX, event.clientY, event.button)"
-							oncontextmenu="return false;"></canvas>
-					</td>
-					<td>
-						<video controls id="video1" width="320" height="240" src="../../../Desktop/giveme5.mp4"></video>
-					</td>
-				</tr> -->
-
-<!-- 				<tr>
-					<td>
-						<canvas id="canvas2" width="250" height="200" style="background-color:#dddddd"
-							onmousedown="mouseDownEvent(event.clientX, event.clientY, event.button)"
-							onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)"
-							onmouseup="mouseUpEvent(event.clientX, event.clientY, event.button)"
-							oncontextmenu="return false;"></canvas>
-					</td>
-					<td>
-						<video controls id="video2" width="320" height="240" src="../../../Desktop/video2.mp4"></video>
-					</td>
-				</tr> -->
 			</tbody>
 		</table>
-<!-- 		<script>
-			$("#videoTable tbody").on("click", function() {
-				console.log($("#videoTable").DataTable().row( $(this).closest('tr') ))
-				$("#videoTable").DataTable().row( $(this).closest('tr') ).remove().draw(false)
-				alert("Hello")
-			})
-		</script> -->
 	</div>
 </center>
-
 
 </body>
 </html>

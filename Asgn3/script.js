@@ -339,7 +339,7 @@ function addVideo(url) {
 			onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)" \
 			onmouseup="mouseUpEvent(event.clientX, event.clientY, event.button)" \
 			oncontextmenu="return false;"></canvas>',
-		'<video controls id="'+('video'+idx)+'" width="320" height="240" src="../../../Desktop/'+url+'"></video>'
+		'<video id="'+('video'+idx)+'" width="320" height="240" src="'+url+'"></video>'
 	]).draw(true)
 
 	createVideo(idx)
