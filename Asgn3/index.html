@@ -20,23 +20,60 @@
 <center>
 	<h1> Multiple Video Player</h1><hr>
 	<div class="container" style="width: 80%">
-	<table id='instruction'> 
+	<table id='instruction' align='center'> 
 	<thead>
 		<tr>
-			<td><img src="img/play.png" width='30px' height='30px'></td>
-			<td><img src="img/pause.png" width='30px' height='30px'></td>
-			<td><img src="img/seekPlusTime.png" width='30px' height='30px'></td>
-			<td><img src="img/seekMinusTime.png" width='30px' height='30px'></td>
-			<td><img src="img/increasePlaybackRate.png" width='30px' height='30px'></td>
-			<td><img src="img/decreasePlaybackRate.png" width='30px' height='30px'></td>
-			<td><img src="img/" width='30px' height='30px'></td>
-			<td><img src="img/" width='30px' height='30px'></td>
+			<td align='center'><img src="img/play.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/pause.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/seekPlusTime.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/seekMinusTime.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/increasePlaybackRate.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/decreasePlaybackRate.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/increaseVolume.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/decreaseVolume.png" width='30px' height='30px'></td>
+
 		</tr>
+		<tr>
+			<td align='center'>PlayVideo</td>
+			<td align='center'>PauseVideo</td>
+			<td align='center'>CurrentTime+=10</td>
+			<td align='center'>CurrentTime-=10</td>
+			<td align='center'>PlaybackRate+=0.2</td>
+			<td align='center'>PlaybackRate-=0.2</td>
+			<td align='center'>IncreaseVolume</td>
+			<td align='center'>DecreaseVolume</td>
+		</tr>
+
+		<tr>
+
+			<td align='center'><img src="img/muted.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/unmuted.png" width='30px' height='30px' alternative="enable sound"></td>
+			<td align='center'><img src="img/increaseWidth.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/decreaseWidth.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/increaseHeight.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/decreaseHeight.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/addVideo.png" width='30px' height='30px'></td>
+			<td align='center'><img src="img/deleteVideo.png" width='30px' height='30px'></td>
+		</tr>
+
+		<tr>
+
+			<td align='center'>Muted</td>
+			<td align='center'>Unmuted</td>
+			<td align='center'>Width++</td>
+			<td align='center'>Width--</td>
+			<td align='center'>Height++</td>
+			<td align='center'>Height--</td>
+			<td align='center'>AddVideo</td>
+			<td align='center'>DeleteVideo</td>
+		</tr>
+
 	</thead>
 	<tbody>
-	</tbody>
-		
+	</tbody>	
 	</table>
+
+		<br><br>
 	
 
 		<table class="display" id="videoTable" cellspacing="0" width="100%">
@@ -53,6 +90,7 @@
 						onmousedown="mouseDownEvent(event.clientX, event.clientY, event.button)"
 						onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)"
 						onmouseup="mouseUpEvent(event.clientX, event.clientY, event.button)"
+						ondblclick="mouseDBEvent(event.ClientX, event.ClientY, event.button)"
 						oncontextmenu="return false;">
 					</canvas>
 				</td>

@@ -193,11 +193,20 @@ function mouseUpEvent(x, y, button, id) {
 			else if(result.Name == "muted") {
 				if(_idx==0) {
 					for(var i=1; i<_rcArr.length; ++i) {
-						$("#video"+i)[0].muted = !$("#video"+i)[0].muted
+						$("#video"+i).prop('muted', true);
 					}
 				}
 
-				else $("#video"+_idx)[0].muted = !$("#video"+_idx)[0].muted
+				else $("#video"+i).prop('muted', true);
+			}
+			else if(result.Name == "unmuted") {
+				if(_idx==0) {
+					for(var i=1; i<_rcArr.length; ++i) {
+						$("#video"+i).prop('muted', false);
+					}
+				}
+
+				else $("#video"+_idx).prop('muted', false)
 			}
 			else if(result.Name == "increasePlaybackRate") { 
 				if(_idx==0) {
@@ -220,20 +229,20 @@ function mouseUpEvent(x, y, button, id) {
 			else if(result.Name == "seekPlusTime") {
 				if(_idx==0) {
 					for(var i=1; i<_rcArr.length; ++i) {
-						$("#video"+i)[0].currentTime+=5
+						$("#video"+i)[0].currentTime+=10
 					}
 				}
 
-				else $("#video"+_idx)[0].currentTime+=5
+				else $("#video"+_idx)[0].currentTime+=10
 			}
 			else if(result.Name == "seekMinusTime") {
 				if(_idx==0) {
 					for(var i=1; i<_rcArr.length; ++i) {
-						$("#video"+i)[0].currentTime-=5
+						$("#video"+i)[0].currentTime-=10
 					}
 				}
 
-				else $("#video"+_idx)[0].currentTime-=5
+				else $("#video"+_idx)[0].currentTime-=10
 			}
 			else if(result.Name == "increaseWidth") {
 
@@ -331,6 +340,13 @@ function mouseUpEvent(x, y, button, id) {
 	}
 }
 
+function mouseDBEvent(x,y,button) {
+	_strokeIDArr[_idx] == 0 // starting a new gesture
+	_pointsArr[_idx].length = 0;
+	_gArr[_idx].clearRect(0, 0, _rcArr[_idx].width, _rcArr[_idx].height);
+}
+
+
 function addVideo(url) {
 	var idx = $("#videoTable").DataTable().rows().count()
 	$("#videoTable").DataTable().row.add([
@@ -338,8 +354,9 @@ function addVideo(url) {
 			onmousedown="mouseDownEvent(event.clientX, event.clientY, event.button)" \
 			onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)" \
 			onmouseup="mouseUpEvent(event.clientX, event.clientY, event.button)" \
+			ondblclick="mouseDBEvent(event.ClientX, event.ClientY, event.button)" \
 			oncontextmenu="return false;"></canvas>',
-		'<video id="'+('video'+idx)+'" width="320" height="240" src="'+url+'"></video>'
+		'<video id="'+('video'+idx)+'" width="350" height="250" src="'+url+'"></video>'
 	]).draw(true)
 
 	createVideo(idx)
